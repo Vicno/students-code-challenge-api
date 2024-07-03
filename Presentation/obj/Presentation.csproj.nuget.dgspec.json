@@ -4,14 +4,14 @@
     "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Presentation\\Presentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\Logic.csproj": {
+    "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\Logic.csproj",
-        "projectName": "Logic",
-        "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\Logic.csproj",
+        "projectUniqueName": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj",
+        "projectName": "Data",
+        "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\diego.rosazza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\obj\\",
+        "outputPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -68,14 +64,14 @@
         }
       }
     },
-    "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj": {
+    "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj",
-        "projectName": "Data",
-        "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\Logic.csproj",
+        "projectName": "Logic",
+        "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\Logic.csproj",
         "packagesPath": "C:\\Users\\diego.rosazza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\obj\\",
+        "outputPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -96,7 +92,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -157,11 +157,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\Logic.csproj": {
-                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\2.Logic\\Logic.csproj"
+              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Data\\Data.csproj"
               },
-              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\3.Data\\Data.csproj"
+              "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\Logic.csproj": {
+                "projectPath": "C:\\Users\\diego.rosazza\\Desktop\\Students Code Challenge\\students-code-challenge-api\\Logic\\Logic.csproj"
               }
             }
           }

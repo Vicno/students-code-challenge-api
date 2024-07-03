@@ -2,15 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>_3.Data</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="LocalDB\" />
-    <Folder Include="Repository\Interfaces\" />
-  </ItemGroup>
 
 </Project>
