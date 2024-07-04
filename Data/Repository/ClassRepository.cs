@@ -1,38 +1,78 @@
 ﻿using Data.Models;
 using Data.Repository.interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using JsonFlatFileDataStore;
 
 namespace Data.Repository
 {
     public class ClassRepository : IClassRepository
     {
-        Task<Class> IClassRepository.Create(Student newStudent)
+        private readonly DataStore _store;
+        private readonly IDocumentCollection<Class> _collection;
+
+        public ClassRepository(string filePath)
         {
-            throw new NotImplementedException();
+            _store = new DataStore(filePath);
+            _collection = _store.GetCollection<Class>();
         }
 
-        Task<Class> IClassRepository.Delete(Student newStudent)
+        public Class Create(Class newClass)
         {
-            throw new NotImplementedException();
+            _collection.InsertOne(newClass);
+            return GetById(newClass.ClassCode);
         }
 
-        Task<IEnumerable<Class>> IClassRepository.GetAll()
+        public Class? Delete(Guid classCode)
         {
-            throw new NotImplementedException();
+            Class? removedClass = GetById(classCode);
+            _collection.DeleteOne(c => c.ClassCode == classCode);
+            return removedClass;
         }
 
-        Task<IEnumerable<Class>> IClassRepository.GetAllStudentsPerClass(Guid studentId)
+        public IEnumerable<Class> GetAll()
         {
-            throw new NotImplementedException();
+            return _collection.AsQueryable().ToList();
         }
 
-        Task<Class> IClassRepository.Update(Student newStudent)
+        public Class? GetById(Guid classCode)
         {
-            throw new NotImplementedException();
+            return _collection.AsQueryable().FirstOrDefault(c => c.ClassCode == classCode);
         }
+
+        public Class? Update(Class classItem)
+        {
+            _collection.ReplaceOne(c => c.ClassCode == classItem.ClassCode , classItem);
+            return GetById(classItem.ClassCode);
+        }
+
+        public IEnumerable<Guid>? GetStudents(Guid classCode)
+        {
+            var classItem = GetById(classCode);
+            return classItem?.Students ?? [];
+        }
+
+        public IEnumerable<Guid>? AddStudent(Guid classCode, Guid studentId)
+        {
+            var classItem = GetById(classCode);
+            if (classItem != null)
+            {
+                classItem.Students.Add(studentId);
+                Update(classItem);
+            }
+
+            return classItem?.Students;
+        }
+
+        public IEnumerable<Guid>? RemoveStudent(Guid classCode, Guid studentId)
+        {
+            var classItem = GetById(classCode);
+            if (classItem != null)
+            {
+                classItem.Students.Remove(studentId);
+                Update(classItem);
+            }
+            return classItem.Students;
+        }
+      
+
     }
 }

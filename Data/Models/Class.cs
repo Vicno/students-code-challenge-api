@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    internal class Class
+    public class Class
     {
         public Guid ClassCode { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public List<Guid> Students { get; set; }
     }
 }

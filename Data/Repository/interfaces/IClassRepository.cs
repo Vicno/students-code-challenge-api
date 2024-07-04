@@ -2,12 +2,17 @@
 
 namespace Data.Repository.interfaces
 {
-    internal interface IClassRepository
+    public interface IClassRepository
     {
-        Task<Class> Create(Student newStudent);
-        Task<Class> Update(Student newStudent);
-        Task<Class> Delete(Student newStudent);
-        Task<IEnumerable<Class>> GetAll();
-        Task<IEnumerable<Class>> GetAllStudentsPerClass(Guid studentId);
+        Class? GetById(Guid classCode);
+        Class Create(Class newClass);
+        Class? Update(Class newClass);
+        Class? Delete(Guid newClass);
+        IEnumerable<Class> GetAll();
+        IEnumerable<Guid>? GetStudents(Guid classCode);
+        IEnumerable<Guid>? AddStudent(Guid classCode, Guid studentId);
+        IEnumerable<Guid>? RemoveStudent(Guid classCode, Guid studentId);
+     
+
     }
 }

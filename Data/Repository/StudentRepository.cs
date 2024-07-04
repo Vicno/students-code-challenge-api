@@ -1,10 +1,5 @@
 ﻿using Data.Models;
 using Data.Repository.interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
@@ -12,27 +7,32 @@ namespace Data.Repository
     {
         public StudentRepository() { }
 
-        public Task<Student> Create(Student newStudent)
+        public Student Create(Student newStudent)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Student> Delete(Student newStudent)
+        public Student Delete(Student newStudent)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Student>> GetAll()
+        public IEnumerable<Student> GetAllClassesForStudent(Guid studentId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Student>> GetAllClassesForStudent(Guid studentId)
+        public Student GetById(Guid studentId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Student> Update(Student newStudent)
+        public Student Update(Student newStudent)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Student> IStudentRepository.GetAll()
         {
             throw new NotImplementedException();
         }
