@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Logic.Models;
 
 namespace Logic.Managers.Interfaces
 {
-    internal interface IStudentManager
+    public interface IStudentManager
     {
+        IEnumerable<StudentDto> GetAll();
+        StudentDto GetById(Guid studentId);
+
+        StudentDto Create(StudentDto newStudent);
+
+        StudentDto Update(StudentDto newStudent);
+        StudentDto Delete(Guid studentId);
+
+        IEnumerable<ClassDto> GetAllClasses(Guid studentId);
     }
 }

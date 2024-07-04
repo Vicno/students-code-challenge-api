@@ -35,7 +35,13 @@ namespace Logic.Managers
 
         public IEnumerable<ClassDto> GetAll()
         {
-            return _mapper.Map<IEnumerable<ClassDto>>(_unitOfWork.ClassRepository.GetAll());
+            var classes = _mapper.Map<IEnumerable<ClassDto>>(_unitOfWork.ClassRepository.GetAll());
+            List<ClassDto> completeClasses = []; 
+            foreach(ClassDto item in classes)
+            {
+                completeClasses.Add(AssembleClass(item.ClassCode));
+            }
+            return completeClasses;
         }
 
         public ClassDto GetById(Guid classCode)
