@@ -1,5 +1,4 @@
-﻿
-using Logic.Models;
+﻿using Logic.Models;
 
 namespace Logic.Managers.Interfaces
 {
@@ -11,9 +10,9 @@ namespace Logic.Managers.Interfaces
         ClassDto Create(ClassDto newClass);
 
         ClassDto Update(ClassDto newClass);
-        ClassDto Delete(ClassDto deletedClass);
-        IEnumerable<ClassDto> GetStudentsForClass(Guid classCode);
-        IEnumerable<ClassDto> AddStudentToClass(Guid classCode, Guid studentId);
-        IEnumerable<ClassDto> RemoveStudentFromClass(Guid classCode, Guid studentId);
+        ClassDto Delete(Guid deletedClass);
+        IEnumerable<StudentDto> GetStudentsForClass(Guid classCode);
+        ClassDto AddStudentToClass(Guid classCode, Guid studentId);
+        ClassDto RemoveStudentFromClass(Guid classCode, Guid studentId);
     }
 }

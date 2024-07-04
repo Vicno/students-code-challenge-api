@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Logic.Models
         public Guid ClassCode { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public List<Guid> Students { get; set; }
+        public List<StudentDto> Students { get; set; }
     }
 }
 }
