@@ -6,9 +6,9 @@ namespace Data.Repository.interfaces
     {
         Student Create(Student newStudent);
         Student? Update(Student newStudent);
-        Student? Delete(Guid studentId);
+        Student? Delete(string studentId);
         IEnumerable<Student> GetAll();
-        Student? GetById(Guid studentId);
+        Student? GetById(string studentId);
 
     }
 }

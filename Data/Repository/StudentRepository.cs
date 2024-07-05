@@ -26,14 +26,14 @@ namespace Data.Repository
             return GetById(newStudent.Id);
         }
 
-        public Student? Delete(Guid studentId)
+        public Student? Delete(string studentId)
         {
             Student? removedStudent = GetById(studentId);
             _collection.DeleteOne(c => c.Id == studentId);
             return removedStudent;
         }
 
-        public Student? GetById(Guid studentId)
+        public Student? GetById(string studentId)
         {
             return _collection.AsQueryable().FirstOrDefault(s => s.Id == studentId);
         }

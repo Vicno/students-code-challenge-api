@@ -26,7 +26,7 @@ namespace Logic.Managers
 
             Student createStudent = new()
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = newStudent.Name,
                 LastName = newStudent.LastName,
             };
@@ -34,7 +34,7 @@ namespace Logic.Managers
             return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Create(createStudent));
         }
 
-        public StudentDto Delete(Guid deletedStudentId)
+        public StudentDto Delete(string deletedStudentId)
         {
             if(_unitOfWork.StudentRepository.GetById(deletedStudentId) == null)
             {
@@ -49,7 +49,7 @@ namespace Logic.Managers
             return _mapper.Map<IEnumerable<StudentDto>>(_unitOfWork.StudentRepository.GetAll());
         }
 
-        public StudentDto GetById(Guid studentId)
+        public StudentDto GetById(string studentId)
         {
             var student = _unitOfWork.StudentRepository.GetById(studentId);
             return student == null ? throw new NotFoundException("No valid student Id found") : _mapper.Map<StudentDto>(student);
@@ -71,7 +71,7 @@ namespace Logic.Managers
             return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Update(studentToUpdate));
         }
 
-        public IEnumerable<ClassDto> GetAllClasses(Guid studentId)
+        public IEnumerable<ClassDto> GetAllClasses(string studentId)
         {
             if (_unitOfWork.StudentRepository.GetById(studentId) == null)
             {
@@ -90,7 +90,7 @@ namespace Logic.Managers
             return completeClasses;
         }
 
-        private ClassDto AssembleClass(Guid classCode)
+        private ClassDto AssembleClass(string classCode)
         {
             var studentList = _unitOfWork.ClassRepository.GetStudents(classCode);
             var studentObjects = GetStudents(studentList);
@@ -100,7 +100,7 @@ namespace Logic.Managers
             return result;
         }
 
-        private List<StudentDto> GetStudents(IEnumerable<Guid>? studentIds)
+        private List<StudentDto> GetStudents(IEnumerable<string>? studentIds)
         {
             List<StudentDto> studentObjects = [];
             if (studentIds != null)

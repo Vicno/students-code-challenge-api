@@ -21,7 +21,7 @@ namespace Data.Repository
             return GetById(newClass.ClassCode);
         }
 
-        public Class? Delete(Guid classCode)
+        public Class? Delete(string classCode)
         {
             Class? removedClass = GetById(classCode);
             _collection.DeleteOne(c => c.ClassCode == classCode);
@@ -33,7 +33,7 @@ namespace Data.Repository
             return _collection.AsQueryable().ToList();
         }
 
-        public Class? GetById(Guid classCode)
+        public Class? GetById(string classCode)
         {
             return _collection.AsQueryable().FirstOrDefault(c => c.ClassCode == classCode);
         }
@@ -44,13 +44,13 @@ namespace Data.Repository
             return GetById(classItem.ClassCode);
         }
 
-        public IEnumerable<Guid>? GetStudents(Guid classCode)
+        public IEnumerable<string>? GetStudents(string classCode)
         {
             var classItem = GetById(classCode);
             return classItem?.Students ?? [];
         }
 
-        public IEnumerable<Guid>? AddStudent(Guid classCode, Guid studentId)
+        public IEnumerable<string>? AddStudent(string classCode, string studentId)
         {
             var classItem = GetById(classCode);
             if (classItem != null)
@@ -62,7 +62,7 @@ namespace Data.Repository
             return classItem?.Students;
         }
 
-        public IEnumerable<Guid>? RemoveStudent(Guid classCode, Guid studentId)
+        public IEnumerable<string>? RemoveStudent(string classCode, string studentId)
         {
             var classItem = GetById(classCode);
             if (classItem != null)
