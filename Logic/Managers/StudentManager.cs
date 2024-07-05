@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data;
 using Data.Models;
+using Logic.Exceptions;
 using Logic.Managers.Interfaces;
 using Logic.Models;
 
@@ -11,13 +12,35 @@ namespace Logic.Managers
     {
         private readonly IUnitOfWork _unitOfWork = uow;
         private readonly IMapper _mapper = mapper;
+
         public StudentDto Create(StudentDto newStudent)
         {
-            return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Create(_mapper.Map<Student>(newStudent)));
+            if (newStudent == null)
+            {
+                throw new BadRequestException("Fields should not be empty");
+            }
+            if (String.IsNullOrEmpty(newStudent.Name) || String.IsNullOrEmpty(newStudent.LastName))
+            {
+                throw new BadRequestException("Name and lastname must be given");
+            }
+
+            Student createStudent = new()
+            {
+                Id = new Guid(),
+                Name = newStudent.Name,
+                LastName = newStudent.LastName,
+            };
+
+            return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Create(createStudent));
         }
 
         public StudentDto Delete(Guid deletedStudentId)
         {
+            if(_unitOfWork.StudentRepository.GetById(deletedStudentId) == null)
+            {
+                throw new NotFoundException("No valid student Id found");
+            }
+
             return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Delete(deletedStudentId));
         }
 
@@ -28,12 +51,21 @@ namespace Logic.Managers
 
         public StudentDto GetById(Guid studentId)
         {
-            return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.GetById(studentId));
+            var student = _unitOfWork.StudentRepository.GetById(studentId);
+            return student == null ? throw new NotFoundException("No valid student Id found") : _mapper.Map<StudentDto>(student);
         }
 
         public StudentDto Update(StudentDto newStudent)
         {
-            Student studentToUpdate = _unitOfWork.StudentRepository.GetById(newStudent.Id);
+            if (newStudent == null)
+            {
+                throw new BadRequestException("Fields should not be empty");
+            }
+            if (String.IsNullOrEmpty(newStudent.Name) || String.IsNullOrEmpty(newStudent.LastName))
+            {
+                throw new BadRequestException("Name and lastname must be given");
+            }
+            Student studentToUpdate = _unitOfWork.StudentRepository.GetById(newStudent.Id) ?? throw new NotFoundException("No valid student Id found");
             studentToUpdate.Name = newStudent.Name;
             studentToUpdate.LastName = newStudent.LastName;
             return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Update(studentToUpdate));
@@ -41,6 +73,10 @@ namespace Logic.Managers
 
         public IEnumerable<ClassDto> GetAllClasses(Guid studentId)
         {
+            if (_unitOfWork.StudentRepository.GetById(studentId) == null)
+            {
+                throw new NotFoundException("No valid student Id found");
+            }
             var classes = _mapper.Map<IEnumerable<ClassDto>>(_unitOfWork.ClassRepository.GetAll());
             List<ClassDto> completeClasses = [];
             foreach (ClassDto item in classes)
