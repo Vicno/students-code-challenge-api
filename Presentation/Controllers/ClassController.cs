@@ -3,6 +3,7 @@ using Logic.Exceptions;
 using Logic.Managers.Interfaces;
 using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 
 namespace YourNamespace.Controllers
@@ -21,6 +22,7 @@ namespace YourNamespace.Controllers
             return Ok(classes);
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpGet("{id}")]
         public ActionResult<ClassDto> GetById(string id)
         {
@@ -35,6 +37,7 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.BadRequest)]
         [HttpPost]
         public ActionResult<ClassDto> Create([FromBody] ClassDto classDto)
         {
@@ -49,6 +52,8 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpPut("{id}")]
         public ActionResult<ClassDto> Update(string id, [FromBody] ClassDto classDto)
         {
@@ -72,6 +77,7 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpDelete("{id}")]
         public ActionResult<ClassDto> Delete(string id)
         {
@@ -86,6 +92,7 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpPost("{classCode}/AddStudent/{studentId}")]
         public ActionResult<ClassDto> AddStudentToClass(string classCode, string studentId)
         {
@@ -100,6 +107,7 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpPost("{classCode}/RemoveStudent/{studentId}")]
         public ActionResult<ClassDto> RemoveStudentFromClass(string classCode, string studentId)
         {
@@ -114,6 +122,7 @@ namespace YourNamespace.Controllers
             }
         }
 
+        [ProducesResponseType(typeof(void), (int)HttpStatusCode.NotFound)]
         [HttpGet("{classCode}/Students")]
         public ActionResult<IEnumerable<StudentDto>> GetStudentsForClass(string classCode)
         {

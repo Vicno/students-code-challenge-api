@@ -1,7 +1,6 @@
 ﻿using Data.Models;
 using Data.Repository.interfaces;
 using JsonFlatFileDataStore;
-using Newtonsoft.Json;
 
 namespace Data.Repository
 {

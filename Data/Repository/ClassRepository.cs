@@ -65,7 +65,5 @@ namespace Data.Repository
             }
             return classItem.Students;
         }
-      
-
     }
 }

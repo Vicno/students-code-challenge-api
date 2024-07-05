@@ -14,9 +14,6 @@ namespace YourNamespace.Controllers
         private readonly IStudentManager _studentManager = studentManager;
         private readonly IMapper _mapper = mapper;
 
-        /// <summary>
-        /// Returns all students.
-        /// </summary>
         [HttpGet]
         public IActionResult GetAllStudents()
         {

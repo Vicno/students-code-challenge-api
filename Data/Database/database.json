@@ -38,16 +38,10 @@
     {
       "classCode": "c3d62676-a90f-48dd-9a26-68b0909bef6e",
       "title": "Literature",
-      "description": "tralalala",
+      "description": "textChange",
       "students": [
         "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde2e"
       ]
-    },
-    {
-      "classCode": "33b6b7e5-09fc-4abd-991f-96ab1348b541",
-      "title": "Literature",
-      "description": "tralalala",
-      "students": []
     }
   ]
 }
