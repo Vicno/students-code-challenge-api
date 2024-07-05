@@ -35,6 +35,13 @@ mono_crash.*
 **/**/[Oo]bj/
 **/**/[Ll]og/
 **/**/[Ll]ogs/
+**/[Bb]in/
+**/[Oo]bj/
+
+ Presentation/bin/
+
+ Presentation/obj/
+
 
 
 # Visual Studio 2015/2017 cache/options directory

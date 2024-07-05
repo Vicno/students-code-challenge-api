@@ -35,3 +35,6 @@ C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-a
 C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\bin\Debug\net8.0\JsonFlatFileDataStore.dll
+C:\Users\diego.rosazza\Desktop\Students Code Challenge\students-code-challenge-api\Presentation\bin\Debug\net8.0\Newtonsoft.Json.dll
