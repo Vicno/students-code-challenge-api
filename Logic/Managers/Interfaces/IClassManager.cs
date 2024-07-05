@@ -5,14 +5,14 @@ namespace Logic.Managers.Interfaces
     public interface IClassManager
     {
         IEnumerable<ClassDto> GetAll();
-        ClassDto GetById(Guid classCode);
+        ClassDto GetById(string classCode);
 
         ClassDto Create(ClassDto newClass);
 
         ClassDto Update(ClassDto newClass);
-        ClassDto Delete(Guid deletedClass);
-        IEnumerable<StudentDto> GetStudentsForClass(Guid classCode);
-        ClassDto AddStudentToClass(Guid classCode, Guid studentId);
-        ClassDto RemoveStudentFromClass(Guid classCode, Guid studentId);
+        ClassDto Delete(string deletedClass);
+        IEnumerable<StudentDto> GetStudentsForClass(string classCode);
+        ClassDto AddStudentToClass(string classCode, string studentId);
+        ClassDto RemoveStudentFromClass(string classCode, string studentId);
     }
 }

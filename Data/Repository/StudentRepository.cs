@@ -6,16 +6,15 @@ namespace Data.Repository
 {
     public class StudentRepository : IStudentRepository
     {
-        private readonly DataStore _store;
         private readonly IDocumentCollection<Student> _collection;
-        public StudentRepository(string filePath) {
-            _store = new DataStore(filePath);
-            _collection = _store.GetCollection<Student>();
+        public StudentRepository(DataStore store) {
+            
+            _collection = store.GetCollection<Student>("students");
         }
 
         public Student Create(Student newStudent)
         {
-
+            System.Diagnostics.Debug.WriteLine(newStudent.Id);
             _collection.InsertOne(newStudent);
             return GetById(newStudent.Id);
         }
@@ -26,20 +25,21 @@ namespace Data.Repository
             return GetById(newStudent.Id);
         }
 
-        public Student? Delete(Guid studentId)
+        public Student? Delete(string studentId)
         {
             Student? removedStudent = GetById(studentId);
             _collection.DeleteOne(c => c.Id == studentId);
             return removedStudent;
         }
 
-        public Student? GetById(Guid studentId)
+        public Student? GetById(string studentId)
         {
             return _collection.AsQueryable().FirstOrDefault(s => s.Id == studentId);
         }
 
         IEnumerable<Student> IStudentRepository.GetAll()
         {
+            
             return _collection.AsQueryable().ToList();
         }
     }

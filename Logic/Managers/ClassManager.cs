@@ -11,7 +11,7 @@ namespace Logic.Managers
     {
         private readonly IUnitOfWork _unitOfWork = uow;
         private readonly IMapper _mapper = mapper;
-        public ClassDto AddStudentToClass(Guid classCode, Guid studentId)
+        public ClassDto AddStudentToClass(string classCode, string studentId)
         {
             if (_unitOfWork.StudentRepository.GetById(studentId) == null)
             {
@@ -39,7 +39,7 @@ namespace Logic.Managers
 
             Class creatingClass = new()
             {
-                ClassCode = new Guid(),
+                ClassCode = Guid.NewGuid().ToString(),
                 Title = newClass.Title,
                 Description = newClass.Description,
                 Students = []
@@ -47,7 +47,7 @@ namespace Logic.Managers
            return _mapper.Map<ClassDto>(_unitOfWork.ClassRepository.Create(creatingClass));
         }
 
-        public ClassDto Delete(Guid classCode)
+        public ClassDto Delete(string classCode)
         {
             if (_unitOfWork.ClassRepository.GetById(classCode) == null)
             {
@@ -67,7 +67,7 @@ namespace Logic.Managers
             return completeClasses;
         }
 
-        public ClassDto GetById(Guid classCode)
+        public ClassDto GetById(string classCode)
         {
             if (_unitOfWork.ClassRepository.GetById(classCode) == null)
             {
@@ -76,7 +76,7 @@ namespace Logic.Managers
             return AssembleClass(classCode);
         }
 
-        public IEnumerable<StudentDto> GetStudentsForClass(Guid classCode)
+        public IEnumerable<StudentDto> GetStudentsForClass(string classCode)
         {
             if (_unitOfWork.ClassRepository.GetById(classCode) == null)
             {
@@ -86,7 +86,7 @@ namespace Logic.Managers
             return GetStudents(studentList);
         }
 
-        public ClassDto RemoveStudentFromClass(Guid classCode, Guid studentId)
+        public ClassDto RemoveStudentFromClass(string classCode, string studentId)
         {
             if (_unitOfWork.ClassRepository.GetById(classCode) == null)
             {
@@ -113,7 +113,7 @@ namespace Logic.Managers
                 throw new BadRequestException("Title and Description Fields cannot be empty");
             }
             Class classToUpdate = _unitOfWork.ClassRepository.GetById(newClass.ClassCode);
-            List<Guid>classToUpdateStudents = (List<Guid>)_unitOfWork.ClassRepository.GetStudents(classToUpdate.ClassCode);
+            List<string> classToUpdateStudents = (List<string>)_unitOfWork.ClassRepository.GetStudents(classToUpdate.ClassCode);
             classToUpdate.Title = newClass.Title;
             classToUpdate.Description = newClass.Description;
             classToUpdate.Students = classToUpdateStudents;
@@ -121,7 +121,7 @@ namespace Logic.Managers
             return AssembleClass(newClass.ClassCode)
 ;        }
 
-        private ClassDto AssembleClass(Guid classCode)
+        private ClassDto AssembleClass(string classCode)
         {
             var studentList = _unitOfWork.ClassRepository.GetStudents(classCode);
             var studentObjects = GetStudents(studentList);
@@ -131,7 +131,7 @@ namespace Logic.Managers
             return result;
         }
 
-        private ClassDto AssembleClass(Guid classCode, IEnumerable<Guid> studentList)
+        private ClassDto AssembleClass(string classCode, IEnumerable<string> studentList)
         {
             var studentObjects = GetStudents(studentList);
 
@@ -140,7 +140,7 @@ namespace Logic.Managers
             return result;
         }
 
-        private List<StudentDto> GetStudents(IEnumerable<Guid>? studentIds) {
+        private List<StudentDto> GetStudents(IEnumerable<string>? studentIds) {
             List<StudentDto> studentObjects = [];
             if (studentIds != null) {
                 foreach (var student in studentIds)

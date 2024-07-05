@@ -4,14 +4,14 @@ namespace Data.Repository.interfaces
 {
     public interface IClassRepository
     {
-        Class? GetById(Guid classCode);
+        Class? GetById(string classCode);
         Class Create(Class newClass);
         Class? Update(Class newClass);
-        Class? Delete(Guid newClass);
+        Class? Delete(string newClass);
         IEnumerable<Class> GetAll();
-        IEnumerable<Guid>? GetStudents(Guid classCode);
-        IEnumerable<Guid>? AddStudent(Guid classCode, Guid studentId);
-        IEnumerable<Guid>? RemoveStudent(Guid classCode, Guid studentId);
+        IEnumerable<string>? GetStudents(string classCode);
+        IEnumerable<string>? AddStudent(string classCode, string studentId);
+        IEnumerable<string>? RemoveStudent(string classCode, string studentId);
      
 
     }

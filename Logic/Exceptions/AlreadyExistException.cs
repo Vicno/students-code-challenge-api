@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace Logic.Exceptions
+﻿namespace Logic.Exceptions
 {
     public class AlreadyExistException(string message) : Exception(message)
     {
