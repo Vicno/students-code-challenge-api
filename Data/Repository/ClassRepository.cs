@@ -31,6 +31,11 @@ namespace Data.Repository
             return _collection.AsQueryable().FirstOrDefault(c => c.ClassCode == classCode);
         }
 
+        public Class? GetByTitle(string title)
+        {
+            return _collection.AsQueryable().FirstOrDefault(c => c.Title == title);
+        }
+
         public Class? Update(Class classItem)
         {
             _collection.ReplaceOne(c => c.ClassCode == classItem.ClassCode , classItem);

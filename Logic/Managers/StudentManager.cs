@@ -36,9 +36,17 @@ namespace Logic.Managers
 
         public StudentDto Delete(string deletedStudentId)
         {
-            if(_unitOfWork.StudentRepository.GetById(deletedStudentId) == null)
+            if (_unitOfWork.StudentRepository.GetById(deletedStudentId) == null)
             {
                 throw new NotFoundException("No valid student Id found");
+            }
+            var allClasses = _unitOfWork.ClassRepository.GetAll();
+            foreach (var classItem in allClasses)
+            {
+                if (classItem.Students.Contains(deletedStudentId))
+                {
+                    _unitOfWork.ClassRepository.RemoveStudent(classItem.ClassCode, deletedStudentId);
+                }
             }
 
             return _mapper.Map<StudentDto>(_unitOfWork.StudentRepository.Delete(deletedStudentId));
