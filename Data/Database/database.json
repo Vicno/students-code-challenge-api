@@ -1,0 +1,43 @@
+{
+  "students": [
+    {
+      "id": "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde2e",
+      "name": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde35",
+      "name": "Johny",
+      "lastName": "Dom"
+    },
+    {
+      "id": "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde39",
+      "name": "Alan",
+      "lastName": "Runner"
+    }
+  ],
+  "classes": [
+    {
+      "classCode": "8b5b-4e42-8c50-dc4bb3cbde2e",
+      "title": "Math 101",
+      "description": "Basic Math Class",
+      "students": [
+        "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde2e"
+      ]
+    },
+    {
+      "classCode": "c3d62676-a90f-48dd-9a26-68b0909bef6e",
+      "title": "Literature",
+      "description": "Higher reading and writing",
+      "students": [
+        "f2fdf7bb-8b5b-4e42-8c50-dc4bb3cbde2e"
+      ]
+    },
+    {
+      "classCode": "bd526934-9127-454d-b53b-af3691ca314e",
+      "title": "P.E",
+      "description": "Sports and athletics.",
+      "students": []
+    }
+  ]
+}
