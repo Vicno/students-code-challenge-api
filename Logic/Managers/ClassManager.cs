@@ -32,9 +32,14 @@ namespace Logic.Managers
             {
                 throw new BadRequestException("Fields should not be empty");
             }
-            if (String.IsNullOrEmpty(newClass.Title)|| String.IsNullOrEmpty(newClass.Description))
+            if (String.IsNullOrEmpty(newClass.Title) || String.IsNullOrEmpty(newClass.Description))
             {
                 throw new BadRequestException("Title and Description Fields cannot be empty");
+            }
+
+            if (_unitOfWork.ClassRepository.GetByTitle(newClass.Title) != null)
+            {
+                throw new BadRequestException("Class with the same title already exists");
             }
 
             Class creatingClass = new()
@@ -44,7 +49,7 @@ namespace Logic.Managers
                 Description = newClass.Description,
                 Students = []
             };
-           return _mapper.Map<ClassDto>(_unitOfWork.ClassRepository.Create(creatingClass));
+            return _mapper.Map<ClassDto>(_unitOfWork.ClassRepository.Create(creatingClass));
         }
 
         public ClassDto Delete(string classCode)
