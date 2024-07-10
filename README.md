@@ -108,7 +108,7 @@ The endpoints work on the base error handling logic used by swagger, meaning tha
 }
 ```
 
-These mostly handle structure and data validation on a functional level, meaning that a logic level error handling is needed, for this purpose some error scenarios were implemneted to vaidate the data inputed and the presence of data, should these scenarios trigger the response will be a single text response like so:
+These mostly handle structure and data validation on a functional level, meaning that a logic level error handling is needed, for this purpose some error scenarios were implemented to validate the data inputed and the presence of data, should these scenarios trigger the response will be a single text response like so:
 
 ```json
 No Valid Student Id found
